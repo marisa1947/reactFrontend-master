@@ -9,7 +9,7 @@ function App() {
   const query = async () => {
     try {
       const res = await fetch(
-        'https://cmebackend.herokuapp.com/mas_vendidos', 
+        ' https://cmebackend.herokuapp.com/top_marcas', 
         { method: 'POST' })
       const result = await res.json()
 
@@ -18,7 +18,7 @@ function App() {
       const cantidades = []
 
       for (let item of result.data) {
-        etiquetas.push(item.producto)
+        etiquetas.push(item.marca)
         cantidades.push(item.cantidad)
       }
 
@@ -47,11 +47,11 @@ function App() {
   return (
     <div className="main">
       <h1>Colegio Técnico María Elvinia</h1>
-      <h2>Programación grado 11º</h2>
+      <h2>EMPRESA MARICAT</h2>
       <h3>React con Chart.js</h3>
 
       <button type="button" onClick={handleSubmit}>Consultar</button>
-      <h2>Informe de ventas por productos</h2>
+      <h2>El TOP de las mejores marcas vendidas</h2>
       <div className={ conteo > 0 ? "grafica" : ""}>
         { conteo > 0 ? <CChart  type='bar' datasets={data.datasets} labels={data.labels} /> : ''} 
       </div>
